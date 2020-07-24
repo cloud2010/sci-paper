@@ -1,0 +1,15 @@
+\paragraph{GBDT相关公式}
+
+Boosting加法模型
+
+\begin{equation}
+    F_M(x)=\sum_{m=1}^{M} T(x; \theta_m)
+\end{equation}
+
+每次迭代拟合上一模型残差，构建新的模型如下：
+\[f_{m+1}(x)=f_{m}(x)+T(x; \theta_{m+1})\]
+
+即逐次增加决策树分类器降低上一模型的损失函数输出值，以梯度下降算法不断寻找最佳参数
+\begin{equation}
+    \hat{\theta_m}=\mathop{\arg\min}_{\theta_m}\sum_{i=1}^{N}L(y_i, f_{m-1}(x_i)+T(x; \theta_m))
+\end{equation}
