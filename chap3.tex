@@ -9,7 +9,7 @@ AAC 和 PseAAC 公式
     X_{PseAAC}=\left [ x_{1},x_{2},...,x_{20},x_{20+1},x_{20+2},...,x_{20+\lambda}\right ]
 \end{equation}
 
-PseAAC 元素计算公式
+PseAAC 元素计算公式\cite{chou_prediction_2001}
 \begin{equation}
     x_{i}=\begin{cases}
         \dfrac{f_{i}}{\sum_{j=1}^{20}f_{j}+w\sum_{j=1}^{\lambda}\theta_{j}},\left ( 1 \leq i \leq 20 \right ) \\
@@ -25,9 +25,19 @@ PseAAC 元素计算公式
     + \left[ M(R_{j}) - M(R_{i}) \right]^2 \}
 \end{multline}
 
-CKSAAP 计算公式
+CKSAAP 计算公式\cite{tung_computational_2008}
 \begin{equation}
     \underbrace{( \frac{N_{AA}}{N_{Total}},\frac{N_{AC}}{N_{Total}},...,\frac{N_{i,j}}{N_{Total}},...,\frac{N_{YY}}{N_{Total}} )}_{400}
 \end{equation}
 
 \subsection{特征排序相关公式}
+\begin{tabular}{cccc}
+    \toprule
+    & \multicolumn{3}{c}{Numbers} \\
+    \cmidrule{2-4}
+    & 1 & 2 & 3 \\
+    \midrule
+    Alphabet & A & B & C \\
+    Roman & I & II& III \\
+    \bottomrule
+\end{tabular}
