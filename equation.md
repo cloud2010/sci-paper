@@ -6,6 +6,7 @@
   - [特征提取相关公式](#特征提取相关公式)
     - [AAC 和 PseAAC 公式](#aac-和-pseaac-公式)
     - [CKSAAP 计算公式](#cksaap-计算公式)
+    - [PSSM 相关公式](#pssm-相关公式)
   - [特征排序相关公式](#特征排序相关公式)
   - [其它 MPE 元素](#其它-mpe-元素)
 
@@ -45,6 +46,17 @@ $$
 ### CKSAAP 计算公式
 $$
     \underbrace{( \frac{N_{AA}}{N_{Total}},\frac{N_{AC}}{N_{Total}},...,\frac{N_{i,j}}{N_{Total}},...,\frac{N_{YY}}{N_{Total}} )}_{400}
+$$
+
+### PSSM 相关公式
+$$ 
+    \mathbf{X}_{PSSM}=
+        \begin{bmatrix}
+            x_{1,1} & x_{1,2} & \ldots & x_{1,20}\\
+            x_{2,1} & x_{2,2} & \ldots & x_{2,20}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            x_{21,1} & x_{21,2} & \ldots & x_{21,20}\\
+        \end{bmatrix}
 $$
 
 ## 特征排序相关公式
