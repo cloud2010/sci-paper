@@ -106,6 +106,18 @@ $$
 $$
     Obj^{(m)}=\sum_{j=1}^{T}[(\sum_{i \in I_j}g_i)w_j+\frac{1}{2}(\sum_{i \in I_j}h_i+\lambda)w_j^2]+\gamma T
 $$
+$$
+    w_j^{*} = -\frac{G_j}{H_j+\lambda}=-\frac{\sum_{i \in I_j}g_i}{\sum_{i \in I_j}h_i+\lambda}
+$$
+$$
+    Obj^{(m)}=-\frac{1}{2}\sum_{j=1}^{T}\frac{G_j^2}{H_j+\lambda}+\gamma T
+$$
+$$
+    Gain=Obj_{(L+R)}-Obj_{(L)}-Obj_{(R)}
+$$
+$$
+    Gain=\frac{1}{2}[\frac{(\sum_{i \in I_L}g_i)^2}{\sum_{i \in I_L}h_i+\lambda}+\frac{(\sum_{i \in I_R}g_i)^2}{\sum_{i \in I_R}h_i+\lambda}-\frac{(\sum_{i \in I_j}g_i)^2}{\sum_{i \in I_j}h_i+\lambda}]+\gamma
+$$
 ## 其它 MPE 元素
 ```dot
 digraph G {
