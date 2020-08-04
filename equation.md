@@ -8,6 +8,12 @@
     - [CKSAAP 计算公式](#cksaap-计算公式)
     - [PSSM 相关公式](#pssm-相关公式)
   - [特征排序相关公式](#特征排序相关公式)
+  - [梯度提升模型](#梯度提升模型)
+    - [逻辑斯蒂](#逻辑斯蒂)
+    - [KL散度](#kl散度)
+    - [二分类交叉熵（损失函数）](#二分类交叉熵损失函数)
+    - [梯度下降](#梯度下降)
+    - [XGBoost目标函数](#xgboost目标函数)
   - [其它 MPE 元素](#其它-mpe-元素)
 
 <!-- /code_chunk_output -->
@@ -58,9 +64,48 @@ $$
             x_{21,1} & x_{21,2} & \ldots & x_{21,20}\\
         \end{bmatrix}
 $$
-
 ## 特征排序相关公式
 
+## 梯度提升模型
+### 逻辑斯蒂
+$$
+    P(y=1|x)=\frac{1}{1+e^{-\sum_{m=1}^{M}h_m(x)}}
+$$
+$$
+    P(y=0|x)=1-P(y=1|x)=\frac{e^{-\sum_{m=1}^{M}h_m(x)}}{1+e^{-\sum_{m=1}^{M}h_m(x)}}
+$$
+### KL散度
+$$
+    D_{KL}(p||q)=\sum_{i=1}^{n}p(x_i)log(p(x_i))-\sum_{i=1}^{n}p(x_i)log(q(x_i))
+$$
+### 二分类交叉熵（损失函数）
+$$
+    L(x, y)=-P(x)log\hat{P(x)}-(1-P(x))log(1-\hat{P(x)})
+$$
+$$
+     L(x, y)=ylog(1+e^{-\sum_{m=1}^{M}h_m(x)})+(1-y)[\sum_{m=1}^{M}h_m(x)+log(1+e^{-\sum_{m=1}^{M}h_m(x)})]
+$$
+### 梯度下降
+$$
+    \nabla=-\frac{\partial L}{\partial f_m(x)}|_{x, y}=y-\frac{1}{1+e^{-f_m(x)}} \\
+    \{ x, y-f_{m-1}(x) \}
+$$
+### XGBoost目标函数
+$$
+    Obj^{(m)}=\sum_{i=1}^{n}L(y_i, \hat{y}_{i}^{(m-1)}+f_{m}(x_i))+\sum_{i=1}^{m}\Omega(f_i)
+$$
+$$
+    Obj^{(m)}=\sum_{i=1}^{n}[L(y_i, \hat{y}_{i}^{(m-1)}+g_if_{m}(x_i)+\frac{1}{2}h_if_{m}^2(x_i))]+\sum_{i=1}^{m}\Omega(f_i)
+$$
+$$
+    Obj^{(m)}=\sum_{i=1}^{n}[g_if_{m}(x_i)+\frac{1}{2}h_if_{m}^2(x_i))]+\sum_{i=1}^{m}\Omega(f_i)
+$$
+$$
+    \Omega(f_i)=\gamma T+\frac{1}{2}\lambda\sum_{j=1}{T}w_{j}^{2}
+$$
+$$
+    Obj^{(m)}=\sum_{j=1}^{T}[(\sum_{i \in I_j}g_i)w_j+\frac{1}{2}(\sum_{i \in I_j}h_i+\lambda)w_j^2]+\gamma T
+$$
 ## 其它 MPE 元素
 ```dot
 digraph G {
